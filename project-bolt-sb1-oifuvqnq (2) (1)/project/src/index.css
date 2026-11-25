@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: 'DM Sans', sans-serif; color-scheme: dark; background: #090909; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #090909; }
+button { font: inherit; }
+.font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+.chess-frame { background: linear-gradient(135deg, #211b10, #0e0d0b 45%, #251d0d); box-shadow: 0 24px 70px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.04); }
+.board-shadow { box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+.board-square { border: 0; cursor: pointer; transition: filter .18s ease, transform .18s ease; }
+.board-square:hover { filter: brightness(1.13); }
+.board-light { background: #e0b65d; }
+.board-dark { background: #211c13; }
+.last-square { box-shadow: inset 0 0 0 999px rgba(244, 204, 112, .17); }
+.selected-square { box-shadow: inset 0 0 0 4px #fff2b5, inset 0 0 0 999px rgba(240, 203, 105, .21); }
+.piece { position: relative; z-index: 1; display: block; font-family: Georgia, serif; font-size: clamp(2rem, 7vw, 4.4rem); line-height: 1; transform: translateY(-2%); transition: transform .18s ease, filter .18s ease; user-select: none; }
+.board-square:hover .piece-present { transform: translateY(-7%) scale(1.05); }
+.piece-white { color: #fff1c7; text-shadow: 0 2px 0 #9d7630, 0 4px 8px rgba(0,0,0,.42); }
+.piece-black { color: #15120d; text-shadow: 0 1px 0 #b98b37, 0 3px 5px rgba(255,227,145,.12); }
+.move-dot { position: absolute; z-index: 2; left: 50%; top: 50%; width: 18%; aspect-ratio: 1; border-radius: 50%; background: rgba(34, 28, 17, .4); transform: translate(-50%, -50%); }
+.capture-dot { width: 76%; background: transparent; border: 4px solid rgba(33,28,19,.48); }
+.rank-label, .file-label { position: absolute; z-index: 3; font-size: clamp(.55rem, 1.3vw, .7rem); font-weight: 700; pointer-events: none; opacity: .8; }
+.rank-label { left: 5px; top: 4px; color: #332410; }
+.file-label { right: 5px; bottom: 3px; color: #e9c777; }
+.status-dot { width: 8px; height: 8px; border-radius: 999px; box-shadow: 0 0 10px currentColor; }
+.icon-button { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; color: #a8a29e; transition: .2s ease; }
+.icon-button:hover { color: #f3d27d; border-color: rgba(216,174,84,.6); background: rgba(216,174,84,.07); }
+.choice-card { border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.025); padding: 12px 8px; color: #8a8580; text-align: left; text-transform: capitalize; transition: .2s ease; }
+.choice-card span:first-child { color: #665f58; font-family: Georgia, serif; }
+.choice-card:hover { border-color: rgba(216,174,84,.45); color: #e8d091; }
+.choice-active { border-color: #d8ae54; background: rgba(216,174,84,.1); color: #f0d27e; box-shadow: inset 0 0 0 1px rgba(216,174,84,.15); }
+.choice-active span:first-child { color: #d8ae54; }
+.mode-card { display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.025); padding: 13px 12px; color: #aaa49d; text-align: left; transition: .2s ease; }
+.mode-card:hover { border-color: rgba(216,174,84,.45); color: #fff; }
+.mode-card svg { color: #756d61; }
+.mode-card b, .mode-card small { display: block; }
+.mode-card b { font-size: 13px; color: inherit; }
+.mode-card small { margin-top: 2px; font-size: 11px; color: #6d6863; }
+.mode-active { border-color: #d8ae54; background: rgba(216,174,84,.1); color: #f0d27e; }
+.mode-active svg { color: #d8ae54; }
+.captured-piece { font-size: 24px; line-height: 1; }
+.toggle { width: 42px; height: 24px; border: 0; border-radius: 99px; background: #3a3732; padding: 3px; transition: .2s ease; }
+.toggle span { display: block; width: 18px; height: 18px; border-radius: 50%; background: #858078; transition: .2s ease; }
+.toggle-on { background: #a47c2e; }
+.toggle-on span { background: #fff0bb; transform: translateX(18px); }
+
+@media (max-width: 640px) {
+  .piece { font-size: clamp(1.8rem, 11vw, 3.4rem); }
+  .chess-frame { padding: 8px; }
+  .rank-label { left: 3px; top: 2px; }
+  .file-label { right: 3px; bottom: 2px; }
+}
